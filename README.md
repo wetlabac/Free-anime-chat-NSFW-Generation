@@ -10,13 +10,17 @@ Optimized for mid-range GPUs (tested on **RTX 3070 Ti, 8GB VRAM**).
 
 This repository includes a custom-built SillyTavern extension (`Ult_generation`), specifically designed to bridge SillyTavern and ComfyUI seamlessly.
 
+### 🖼️ Screenshots
+*Here is how the extension menu looks in SillyTavern (mobile view):*
+<img src="file.webp" width="300" alt="Extension Menu">
+
+### Core Features
 *   **🔍 Image Analysis (Import Tags):** Upload any reference image. The script extracts Danbooru tags via ComfyUI (using the DeepGelbooru model) and puts them into an editable field.
 *   **🎨 Instant Variation:** Upload an image, and the script will extract tags and **immediately generate** a new image based on them.
 *   **💬 Text-to-Image:** Create images purely from a text prompt, no reference needed.
 *   **🧠 Automatic LoRA Loading:** The script detects the active character in SillyTavern and automatically finds the matching LoRA file in your ComfyUI `models/loras` folder. No manual selection required.
 *   **📱 PC & Mobile Support:** Automatically detects the host IP address (`window.location.hostname`), allowing seamless use from both desktop and mobile browsers on the same local network.
 *   **📸 In-Chat Image Insertion:** Uses the Base64 method (adapted from *Image Gen Kazuma*) to save generated images directly into SillyTavern's folder. This guarantees that images display correctly in the chat, even on mobile devices.
-*   **🛑 Smart Process Management:** Includes custom `start_all.bat` and `stop_all.bat` scripts that launch the entire stack and forcefully terminate it without killing the Telegram control bot.
 
 ## 🛠️ The Stack (Why it's free)
 
@@ -29,8 +33,8 @@ This repository includes a custom-built SillyTavern extension (`Ult_generation`)
 ## 🚀 Installation
 
 1.  **Clone this repository** or download it as a ZIP.
-2.  **SillyTavern Extension:** Place the `Ult_Generation` folder into your SillyTavern directory:
-    `SillyTavern/public/scripts/extensions/third-party/Ult_Generation/`
+2.  **SillyTavern Extension:** Place the `Ult_generation` folder into your SillyTavern directory:
+    `SillyTavern/public/scripts/extensions/third-party/Ult_generation/`
 3.  **ComfyUI Requirements:** Ensure you have installed the `comfyui-imgutils` plugin in your ComfyUI `custom_nodes` folder.
 4.  **Scripts:** Place `start_all.bat`, `stop_all.bat`, `start_bot.bat`, and `start_bot.vbs` in your root AI folder (e.g., `E:\AI\`).
 5.  **Telegram Bot:** Configure your bot token in the `ai_bot.py` script (or use environment variables).
@@ -42,6 +46,26 @@ This repository includes a custom-built SillyTavern extension (`Ult_generation`)
 2.  Enter your **ComfyUI URL** (e.g., `http://192.168.0.171:8188`). Do not use `127.0.0.1` if you plan to use a phone.
 3.  Select your **Checkpoint** from the dropdown.
 4.  Start ComfyUI with the `--listen` flag to accept mobile connections.
+
+## 🎮 Managing the Stack (Start & Stop Scripts)
+
+To make launching and closing the entire AI stack effortless, this repository includes two custom batch scripts. They are designed to be used either manually or remotely via the Telegram bot.
+
+### 🟢 How `start_all.bat` works
+This script is your one-click launcher. When executed, it performs the following steps:
+1.  **Launch Ollama:** Starts the Ollama background service if it is not already running.
+2.  **Launch ComfyUI:** Opens a new command prompt window and starts ComfyUI. It waits a few seconds to ensure the server initializes properly.
+3.  **Launch SillyTavern:** Opens another command prompt window and starts the SillyTavern server.
+4.  **Ready to Use:** Once all three windows are open, you can access SillyTavern in your browser and start chatting or generating images.
+
+### 🔴 How `stop_all.bat` works
+This script is designed for a safe and complete shutdown. It ensures that heavy AI processes are terminated to free up your GPU and RAM, but **it intentionally leaves your Telegram bot running** so you can still command the PC remotely. 
+Here is what it does:
+1.  **Stops Ollama:** Forcefully closes `ollama.exe` and `ollama app.exe`.
+2.  **Stops SillyTavern:** Uses PowerShell to find the specific process occupying port `8000` and terminates it. It also scans for any remaining `SillyTavern` related processes to ensure a clean shutdown.
+3.  **Stops ComfyUI:** Uses PowerShell to find the process occupying port `8188` and terminates it.
+4.  **Cleans up Windows:** Closes any leftover command prompt windows with titles like "ComfyUI" or "SillyTavern".
+5.  **Preserves the Bot:** It carefully avoids killing the `python.exe` process that runs `ai_bot.py`, keeping your remote control alive.
 
 ## 🙏 Credits & Acknowledgments
 
@@ -55,7 +79,7 @@ This project stands on the shoulders of giants. Special thanks to:
 
 This project uses components from various open-source projects. Please respect their licenses:
 
-*   **My Custom Code (Extension & Scripts):** Licensed under the **MIT License**. See the `LICENSE` file for details.
+*   **My Custom Code (Extension & Scripts):** Licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 *   **DeepGelbooru:** MIT License.
 *   **Image Gen Kazuma:** MIT License.
 
