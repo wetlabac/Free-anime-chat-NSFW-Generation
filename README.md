@@ -47,6 +47,15 @@ This repository includes a custom-built SillyTavern extension (`Ult_generation`)
 3.  Select your **Checkpoint** from the dropdown.
 4.  Start ComfyUI with the `--listen` flag to accept mobile connections.
 
+## 🌐 Disabling Auto-Translation (Important!)
+
+If your browser (like Chrome or Yandex) automatically translates the page, it can break the SillyTavern interface and translate technical terms (like "Checkpoint" or "LoRA") into Russian, making it impossible to find the correct settings.
+
+To prevent this:
+1.  **In your browser settings**: Go to Settings -> Languages -> Disable "Offer to translate pages".
+2.  **On the page**: If a translation bar appears at the top of the page, click "Options" (three dots) and select **"Never translate this site"**.
+3.  **SillyTavern settings**: Inside SillyTavern, go to the User Settings (icon of a person) and set the Interface Language to **English** to ensure the extension buttons match the README instructions.
+
 ## 🎮 Managing the Stack (Start & Stop Scripts)
 
 To make launching and closing the entire AI stack effortless, this repository includes two custom batch scripts. They are designed to be used either manually or remotely via the Telegram bot.
