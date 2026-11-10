@@ -1,0 +1,41 @@
+﻿
+
+ProcessId       : 46824
+ParentProcessId : 23116
+Name            : ollama.exe
+ExecutablePath  : E:\AI\Ollama\ollama.exe
+CommandLine     : "E:\AI\Ollama\ollama.exe"  serve
+
+ProcessId       : 40464
+ParentProcessId : 23116
+Name            : cmd.exe
+ExecutablePath  : C:\Windows\system32\cmd.exe
+CommandLine     : cmd  /k "cd /d "E:\AI\ComfyUI" && run_nvidia_gpu.bat"
+
+ProcessId       : 46228
+ParentProcessId : 40464
+Name            : python.exe
+ExecutablePath  : E:\AI\ComfyUI\python_embeded\python.exe
+CommandLine     : .\python_embeded\python.exe  -s ComfyUI\main.py --windows-standalone-build --listen --enable-cors-hea
+                  der
+
+ProcessId       : 28244
+ParentProcessId : 23116
+Name            : cmd.exe
+ExecutablePath  : C:\Windows\system32\cmd.exe
+CommandLine     : cmd  /k "cd /d "E:\AI\SillyTavern" && start.bat"
+
+ProcessId       : 26304
+ParentProcessId : 28244
+Name            : node.exe
+ExecutablePath  : C:\Program Files\nodejs\node.exe
+CommandLine     : node  server.js 
+
+ProcessId       : 22448
+ParentProcessId : 39896
+Name            : cmd.exe
+ExecutablePath  : C:\Windows\system32\cmd.exe
+CommandLine     : C:\Windows\system32\cmd.exe /c ""E:\AI\stop_all.bat" "
+
+
+
