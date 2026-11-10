@@ -1,0 +1,88 @@
+# ==========================================
+# 1. ВЕСА МОДЕЛЕЙ И БАЗЫ ДАННЫХ (Слишком большие)
+# ==========================================
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.gguf
+*.onnx
+*.db
+*.pkl
+*.h5
+
+# Папки с моделями
+ComfyUI/models/
+Ollama/models/
+ComfyUI/output/
+ComfyUI/input/
+ComfyUI/temp/
+ComfyUI/user/
+
+# ==========================================
+# 2. ВСТРОЕННЫЙ PYTHON И ВЛОЖЕННЫЕ РЕПОЗИТОРИИ
+# ==========================================
+# Игнорируем встроенный Python ComfyUI (тысячи файлов)
+ComfyUI/python_embeded/
+ComfyUI/update/
+ComfyUI/web/
+ComfyUI/tests/
+
+# Игнорируем сам движок ComfyUI (это чужой репозиторий)
+ComfyUI/ComfyUI/
+
+# ==========================================
+# 3. СИСТЕМНЫЙ МУСОР И КЭШ
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+env/
+ENV/
+node_modules/
+.npm/
+
+# ==========================================
+# 4. ЛИЧНЫЕ ДАННЫЕ, ЛОГИ И КОНФИГИ С ТОКЕНАМИ
+# ==========================================
+# Логи Telegram-бота
+telegram_bot.log
+
+# Конфиги с токенами (ОЧЕНЬ ВАЖНО!)
+bot_settings.ini
+config.yaml
+.env
+
+# История чатов и бэкапы SillyTavern
+SillyTavern/data/
+SillyTavern/backups/
+
+# ==========================================
+# 5. МУСОР РЕДАКТОРОВ И ОС
+# ==========================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+
+# ==========================================
+# 6. ИСКЛЮЧЕНИЯ (Что НУЖНО оставить в репозитории)
+# ==========================================
+!start_all.bat
+!stop_all.bat
+!start_bot.vbs
+!start_bot.bat
+!ai_bot.py
+!Ult_Generation/
+!README.md
+!.gitignore
+
+# Игнорируем установленные программы
+Ollama/
+SillyTavern/
+ComfyUI/

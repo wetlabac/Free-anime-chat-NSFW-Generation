@@ -1,0 +1,10 @@
+{
+  "display_name": "Ult_generation",
+  "loading_order": 100,
+  "js": "index.js",
+  "author": "wetlabac",
+  "version": "1.0.0",
+  "homePage": "https://github.com/wetlabac/Ult_Generation",
+  "auto_update": true,
+  "minimum_client_version": "1.12.0"
+}
